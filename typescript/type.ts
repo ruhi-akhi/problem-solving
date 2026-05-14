@@ -39,5 +39,30 @@ const result2 = ispalindrome("hello");
 console.log(result1); // true
 console.log(result2); // false
 
+//loop
+for (let i = 0; i < 5; i++) {
+    if (i % 2 === 0) {
+        console.log(i);
+    }}
 
+const numbers: number[] = [10, 20, 30, 40, 50];
+let sum = 0;
+for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+}
+console.log("Total sum: " ,sum); // 150
 
+//Async Await Problem
+function fetchData(): Promise<string> {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("User Data Loaded");
+        }, 2000);
+    });
+}
+    async function getData() {
+        console.log("Loading...");
+        const data = await fetchData();
+        console.log(data);
+    }
+    getData();  
