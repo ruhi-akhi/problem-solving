@@ -30,8 +30,14 @@ function getUserNames(users: User[]): string[] {
 const userNames: string[] = getUserNames(user);
 console.log(userNames); // ["Alice", "Bob", "Charlie"]
 
-
-
+function ispalindrome(str: string): boolean {
+  const reversed = str.split("").reverse().join("");
+    return str === reversed;
+}
+const result1 = ispalindrome("racecar");
+const result2 = ispalindrome("hello");
+console.log(result1); // true
+console.log(result2); // false
 
 
 
