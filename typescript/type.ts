@@ -81,3 +81,17 @@ app.listen(3000, () => {
   console.log("Server started on port 3000");
 });
 
+
+
+//variable 
+var weight = 38;
+var price = 100;
+var year = 2024;
+var age;
+console.log( price);
+
+
+
+
+
+
