@@ -27,10 +27,19 @@ console.log(Math.PI);
 // console.log(calculateCircleArea(10));
 
 
-function calculateRectangleArea(length, width) {
-  let area = length * width;
+// function calculateRectangleArea(length, width) {
+//   let area = length * width;
+//   return area;
+// }
+
+// console.log(calculateRectangleArea(5, 10));
+// console.log(calculateRectangleArea(8, 12));
+
+
+function calculateTriangleArea(base, height) {
+  let area = 0.5 * base * height;
   return area;
 }
 
-console.log(calculateRectangleArea(5, 10));
-console.log(calculateRectangleArea(8, 12));
+console.log(calculateTriangleArea(10, 5));
+console.log(calculateTriangleArea(12, 8));
