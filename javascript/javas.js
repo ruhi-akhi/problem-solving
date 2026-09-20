@@ -18,12 +18,19 @@
 console.log(Math.PI);
 
 // Function to calculate circle area
-function calculateCircleArea(radius) {
-  let area = Math.PI * radius * radius;
+// function calculateCircleArea(radius) {
+//   let area = Math.PI * radius * radius;
+//   return area;
+// }
+
+// console.log(calculateCircleArea(5));
+// console.log(calculateCircleArea(10));
+
+
+function calculateRectangleArea(length, width) {
+  let area = length * width;
   return area;
 }
 
-console.log(calculateCircleArea(5));
-console.log(calculateCircleArea(10));
-
-
+console.log(calculateRectangleArea(5, 10));
+console.log(calculateRectangleArea(8, 12));
