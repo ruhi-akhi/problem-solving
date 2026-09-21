@@ -45,11 +45,20 @@ console.log(Math.PI);
 // console.log(calculateTriangleArea(12, 8));
 
 
-function convertCelsiusToFahrenheit(celsius) {
-  let fahrenheit = (celsius * 9 / 5) + 32;
-  return fahrenheit;
+// function convertCelsiusToFahrenheit(celsius) {
+//   let fahrenheit = (celsius * 9 / 5) + 32;
+//   return fahrenheit;
+// }
+
+// console.log(convertCelsiusToFahrenheit(0));
+// console.log(convertCelsiusToFahrenheit(25));
+// console.log(convertCelsiusToFahrenheit(100));
+
+
+function calculateSimpleInterest(principal, rate, time) {
+  let interest = (principal * rate * time) / 100;
+  return interest;
 }
 
-console.log(convertCelsiusToFahrenheit(0));
-console.log(convertCelsiusToFahrenheit(25));
-console.log(convertCelsiusToFahrenheit(100));
+console.log(calculateSimpleInterest(1000, 5, 2));
+console.log(calculateSimpleInterest(5000, 8, 3));
