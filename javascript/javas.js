@@ -36,10 +36,20 @@ console.log(Math.PI);
 // console.log(calculateRectangleArea(8, 12));
 
 
-function calculateTriangleArea(base, height) {
-  let area = 0.5 * base * height;
-  return area;
+// function calculateTriangleArea(base, height) {
+//   let area = 0.5 * base * height;
+//   return area;
+// }
+
+// console.log(calculateTriangleArea(10, 5));
+// console.log(calculateTriangleArea(12, 8));
+
+
+function convertCelsiusToFahrenheit(celsius) {
+  let fahrenheit = (celsius * 9 / 5) + 32;
+  return fahrenheit;
 }
 
-console.log(calculateTriangleArea(10, 5));
-console.log(calculateTriangleArea(12, 8));
+console.log(convertCelsiusToFahrenheit(0));
+console.log(convertCelsiusToFahrenheit(25));
+console.log(convertCelsiusToFahrenheit(100));

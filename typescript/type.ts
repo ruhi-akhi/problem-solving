@@ -90,6 +90,15 @@ var year = 2024;
 var age;
 console.log( price);
 
+const numbers =[12, 23, 34, 45, 56];
+console.log(numbers);
+
+for(const num of numbers){
+    console.log(num);
+}
+
+
+
 
 
 
