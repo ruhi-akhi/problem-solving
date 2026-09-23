@@ -55,10 +55,23 @@ console.log(Math.PI);
 // console.log(convertCelsiusToFahrenheit(100));
 
 
-function calculateSimpleInterest(principal, rate, time) {
-  let interest = (principal * rate * time) / 100;
-  return interest;
+// function calculateSimpleInterest(principal, rate, time) {
+//   let interest = (principal * rate * time) / 100;
+//   return interest;
+// }
+
+// console.log(calculateSimpleInterest(1000, 5, 2));
+// console.log(calculateSimpleInterest(5000, 8, 3));
+
+
+
+
+
+
+function calculateDiscount(price: number, discount: number): number {
+  let amount = (price * discount) / 100;
+  return amount;
 }
 
-console.log(calculateSimpleInterest(1000, 5, 2));
-console.log(calculateSimpleInterest(5000, 8, 3));
+console.log(calculateDiscount(1000, 10));
+console.log(calculateDiscount(2500, 20));
