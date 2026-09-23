@@ -68,10 +68,34 @@ console.log(Math.PI);
 
 
 
-function calculateDiscount(price: number, discount: number): number {
-  let amount = (price * discount) / 100;
-  return amount;
+// function calculateDiscount(price: number, discount: number): number {
+//   let amount = (price * discount) / 100;
+//   return amount;
+// }
+
+// console.log(calculateDiscount(1000, 10));
+// console.log(calculateDiscount(2500, 20));
+
+
+interface User {
+  name: string;
+  age: number;
+  email: string;
+  isActive: boolean;
 }
 
-console.log(calculateDiscount(1000, 10));
-console.log(calculateDiscount(2500, 20));
+function showUser(user: User): void {
+  console.log(`Name: ${user.name}`);
+  console.log(`Age: ${user.age}`);
+  console.log(`Email: ${user.email}`);
+  console.log(`Active: ${user.isActive}`);
+}
+
+const user: User = {
+  name: "Akhi",
+  age: 22,
+  email: "akhi@example.com",
+  isActive: true
+};
+
+showUser(user);
