@@ -103,42 +103,70 @@
 
 
 
-interface Product {
-  name: string;
-  price: number;
-  inStock: boolean;
+// interface Product {
+//   name: string;
+//   price: number;
+//   inStock: boolean;
+// }
+
+// const products: Product[] = [
+//   {
+//     name: "Laptop",
+//     price: 50000,
+//     inStock: true
+//   },
+//   {
+//     name: "Mouse",
+//     price: 1200,
+//     inStock: true
+//   },
+//   {
+//     name: "Keyboard",
+//     price: 2500,
+//     inStock: false
+//   }
+// ];
+
+// function showAvailableProducts(products: Product[]): void {
+//   products.forEach((product) => {
+//     if (product.inStock) {
+//       console.log(`${product.name} - ${product.price} BDT`);
+//     }
+//   });
+// }
+
+// showAvailableProducts(products);
+
+
+enum OrderStatus {
+  Pending = "Pending",
+  Shipped = "Shipped",
+  Delivered = "Delivered",
+  Cancelled = "Cancelled"
 }
 
-const products: Product[] = [
-  {
-    name: "Laptop",
-    price: 50000,
-    inStock: true
-  },
-  {
-    name: "Mouse",
-    price: 1200,
-    inStock: true
-  },
-  {
-    name: "Keyboard",
-    price: 2500,
-    inStock: false
-  }
-];
-
-function showAvailableProducts(products: Product[]): void {
-  products.forEach((product) => {
-    if (product.inStock) {
-      console.log(`${product.name} - ${product.price} BDT`);
-    }
-  });
+interface Order {
+  id: number;
+  customerName: string;
+  amount: number;
+  status: OrderStatus;
 }
 
-showAvailableProducts(products);
+function showOrder(order: Order): void {
+  console.log(`Order ID: ${order.id}`);
+  console.log(`Customer: ${order.customerName}`);
+  console.log(`Amount: ${order.amount} BDT`);
+  console.log(`Status: ${order.status}`);
+}
 
+const order: Order = {
+  id: 101,
+  customerName: "Akhi",
+  amount: 2500,
+  status: OrderStatus.Shipped
+};
 
-
+showOrder(order);
 
 
 
