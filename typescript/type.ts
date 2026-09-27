@@ -69,35 +69,73 @@
 
     //Node.js Backend Problem
 
-const express = require("express");
+// const express = require("express");
 
-const app = express();
+// const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Server Running Successfully");
-});
+// app.get("/", (req, res) => {
+//   res.send("Server Running Successfully");
+// });
 
-app.listen(3000, () => {
-  console.log("Server started on port 3000");
-});
+// app.listen(3000, () => {
+//   console.log("Server started on port 3000");
+// });
 
 
 
-//variable 
-var weight = 38;
-var price = 100;
-var year = 2024;
-var age;
-console.log( price);
+// //variable 
+// var weight = 38;
+// var price = 100;
+// var year = 2024;
+// var age;
+// console.log( price);
 
-const numbers =[12, 23, 34, 45, 56];
-console.log(numbers);
+// const numbers =[12, 23, 34, 45, 56];
+// console.log(numbers);
 
-for(const num of numbers){
-    console.log(num);
+// for(const num of numbers){
+//     console.log(num);
+// }
+
+
+
+
+
+
+
+interface Product {
+  name: string;
+  price: number;
+  inStock: boolean;
 }
 
+const products: Product[] = [
+  {
+    name: "Laptop",
+    price: 50000,
+    inStock: true
+  },
+  {
+    name: "Mouse",
+    price: 1200,
+    inStock: true
+  },
+  {
+    name: "Keyboard",
+    price: 2500,
+    inStock: false
+  }
+];
 
+function showAvailableProducts(products: Product[]): void {
+  products.forEach((product) => {
+    if (product.inStock) {
+      console.log(`${product.name} - ${product.price} BDT`);
+    }
+  });
+}
+
+showAvailableProducts(products);
 
 
 
