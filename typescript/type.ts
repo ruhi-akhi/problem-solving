@@ -138,35 +138,122 @@
 // showAvailableProducts(products);
 
 
-enum OrderStatus {
-  Pending = "Pending",
-  Shipped = "Shipped",
-  Delivered = "Delivered",
-  Cancelled = "Cancelled"
-}
+// enum OrderStatus {
+//   Pending = "Pending",
+//   Shipped = "Shipped",
+//   Delivered = "Delivered",
+//   Cancelled = "Cancelled"
+// }
 
-interface Order {
+// interface Order {
+//   id: number;
+//   customerName: string;
+//   amount: number;
+//   status: OrderStatus;
+// }
+
+// function showOrder(order: Order): void {
+//   console.log(`Order ID: ${order.id}`);
+//   console.log(`Customer: ${order.customerName}`);
+//   console.log(`Amount: ${order.amount} BDT`);
+//   console.log(`Status: ${order.status}`);
+// }
+
+// const order: Order = {
+//   id: 101,
+//   customerName: "Akhi",
+//   amount: 2500,
+//   status: OrderStatus.Shipped
+// };
+
+// showOrder(order);
+
+
+type UserRole = "admin" | "user" | "moderator";
+
+interface User {
   id: number;
-  customerName: string;
-  amount: number;
-  status: OrderStatus;
+  name: string;
+  email: string;
+  role: UserRole;
+  isActive: boolean;
 }
 
-function showOrder(order: Order): void {
-  console.log(`Order ID: ${order.id}`);
-  console.log(`Customer: ${order.customerName}`);
-  console.log(`Amount: ${order.amount} BDT`);
-  console.log(`Status: ${order.status}`);
+interface ApiResponse<T> {
+  data: T;
+  success: boolean;
+  message: string;
+  total: number;
 }
 
-const order: Order = {
-  id: 101,
-  customerName: "Akhi",
-  amount: 2500,
-  status: OrderStatus.Shipped
-};
+interface Pagination {
+  page: number;
+  limit: number;
+}
 
-showOrder(order);
+const users: User[] = [
+  {
+    id: 1,
+    name: "Akhi",
+    email: "akhi@gmail.com",
+    role: "admin",
+    isActive: true
+  },
+  {
+    id: 2,
+    name: "Rahim",
+    email: "rahim@gmail.com",
+    role: "user",
+    isActive: true
+  },
+  {
+    id: 3,
+    name: "Karim",
+    email: "karim@gmail.com",
+    role: "moderator",
+    isActive: false
+  },
+  {
+    id: 4,
+    name: "Nila",
+    email: "nila@gmail.com",
+    role: "user",
+    isActive: true
+  }
+];
 
+function getUsers(
+  users: User[],
+  pagination: Pagination,
+  role?: UserRole
+): ApiResponse<User[]> {
 
+  let filteredUsers = role
+    ? users.filter((user) => user.role === role)
+    : users;
 
+  const startIndex = (pagination.page - 1) * pagination.limit;
+
+  const paginatedUsers = filteredUsers.slice(
+    startIndex,
+    startIndex + pagination.limit
+  );
+
+  return {
+    data: paginatedUsers,
+    success: true,
+    message: "Users fetched successfully",
+    total: filteredUsers.length
+  };
+}
+
+const response = getUsers(
+  users,
+  {
+    page: 1,
+    limit: 2
+  },
+  "user"
+);
+
+console.log(response);
