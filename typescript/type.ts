@@ -169,91 +169,174 @@
 // showOrder(order);
 
 
-type UserRole = "admin" | "user" | "moderator";
+// type UserRole = "admin" | "user" | "moderator";
 
-interface User {
+// interface User {
+//   id: number;
+//   name: string;
+//   email: string;
+//   role: UserRole;
+//   isActive: boolean;
+// }
+
+// interface ApiResponse<T> {
+//   data: T;
+//   success: boolean;
+//   message: string;
+//   total: number;
+// }
+
+// interface Pagination {
+//   page: number;
+//   limit: number;
+// }
+
+// const users: User[] = [
+//   {
+//     id: 1,
+//     name: "Akhi",
+//     email: "akhi@gmail.com",
+//     role: "admin",
+//     isActive: true
+//   },
+//   {
+//     id: 2,
+//     name: "Rahim",
+//     email: "rahim@gmail.com",
+//     role: "user",
+//     isActive: true
+//   },
+//   {
+//     id: 3,
+//     name: "Karim",
+//     email: "karim@gmail.com",
+//     role: "moderator",
+//     isActive: false
+//   },
+//   {
+//     id: 4,
+//     name: "Nila",
+//     email: "nila@gmail.com",
+//     role: "user",
+//     isActive: true
+//   }
+// ];
+
+// function getUsers(
+//   users: User[],
+//   pagination: Pagination,
+//   role?: UserRole
+// ): ApiResponse<User[]> {
+
+//   let filteredUsers = role
+//     ? users.filter((user) => user.role === role)
+//     : users;
+
+//   const startIndex = (pagination.page - 1) * pagination.limit;
+
+//   const paginatedUsers = filteredUsers.slice(
+//     startIndex,
+//     startIndex + pagination.limit
+//   );
+
+//   return {
+//     data: paginatedUsers,
+//     success: true,
+//     message: "Users fetched successfully",
+//     total: filteredUsers.length
+//   };
+// }
+
+// const response = getUsers(
+//   users,
+//   {
+//     page: 1,
+//     limit: 2
+//   },
+//   "user"
+// );
+
+// console.log(response);
+
+
+
+type PaymentMethod = "cash" | "bkash" | "card";
+
+interface Product {
   id: number;
   name: string;
-  email: string;
-  role: UserRole;
-  isActive: boolean;
+  price: number;
+  stock: number;
 }
 
-interface ApiResponse<T> {
-  data: T;
-  success: boolean;
-  message: string;
+interface CartItem {
+  product: Product;
+  quantity: number;
+}
+
+interface Order {
+  id: number;
+  items: CartItem[];
+  paymentMethod: PaymentMethod;
   total: number;
 }
 
-interface Pagination {
-  page: number;
-  limit: number;
-}
-
-const users: User[] = [
+const products: Product[] = [
   {
     id: 1,
-    name: "Akhi",
-    email: "akhi@gmail.com",
-    role: "admin",
-    isActive: true
+    name: "Laptop",
+    price: 70000,
+    stock: 5
   },
   {
     id: 2,
-    name: "Rahim",
-    email: "rahim@gmail.com",
-    role: "user",
-    isActive: true
+    name: "Mouse",
+    price: 1500,
+    stock: 10
   },
   {
     id: 3,
-    name: "Karim",
-    email: "karim@gmail.com",
-    role: "moderator",
-    isActive: false
-  },
-  {
-    id: 4,
-    name: "Nila",
-    email: "nila@gmail.com",
-    role: "user",
-    isActive: true
+    name: "Keyboard",
+    price: 3000,
+    stock: 7
   }
 ];
 
-function getUsers(
-  users: User[],
-  pagination: Pagination,
-  role?: UserRole
-): ApiResponse<User[]> {
+const cart: CartItem[] = [
+  {
+    product: products[0],
+    quantity: 1
+  },
+  {
+    product: products[1],
+    quantity: 2
+  },
+  {
+    product: products[2],
+    quantity: 1
+  }
+];
 
-  let filteredUsers = role
-    ? users.filter((user) => user.role === role)
-    : users;
+function calculateCartTotal(items: CartItem[]): number {
+  return items.reduce((total, item) => {
+    return total + item.product.price * item.quantity;
+  }, 0);
+}
 
-  const startIndex = (pagination.page - 1) * pagination.limit;
-
-  const paginatedUsers = filteredUsers.slice(
-    startIndex,
-    startIndex + pagination.limit
-  );
-
+function createOrder(
+  items: CartItem[],
+  paymentMethod: PaymentMethod
+): Order {
   return {
-    data: paginatedUsers,
-    success: true,
-    message: "Users fetched successfully",
-    total: filteredUsers.length
+    id: Date.now(),
+    items,
+    paymentMethod,
+    total: calculateCartTotal(items)
   };
 }
 
-const response = getUsers(
-  users,
-  {
-    page: 1,
-    limit: 2
-  },
-  "user"
-);
+const order = createOrder(cart, "bkash");
 
-console.log(response);
+console.log("Order ID:", order.id);
+console.log("Payment:", order.paymentMethod);
+console.log("Total:", order.total);
