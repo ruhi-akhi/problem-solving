@@ -260,83 +260,99 @@
 
 
 
-type PaymentMethod = "cash" | "bkash" | "card";
+// type PaymentMethod = "cash" | "bkash" | "card";
 
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  stock: number;
+// interface Product {
+//   id: number;
+//   name: string;
+//   price: number;
+//   stock: number;
+// }
+
+// interface CartItem {
+//   product: Product;
+//   quantity: number;
+// }
+
+// interface Order {
+//   id: number;
+//   items: CartItem[];
+//   paymentMethod: PaymentMethod;
+//   total: number;
+// }
+
+// const products: Product[] = [
+//   {
+//     id: 1,
+//     name: "Laptop",
+//     price: 70000,
+//     stock: 5
+//   },
+//   {
+//     id: 2,
+//     name: "Mouse",
+//     price: 1500,
+//     stock: 10
+//   },
+//   {
+//     id: 3,
+//     name: "Keyboard",
+//     price: 3000,
+//     stock: 7
+//   }
+// ];
+
+// const cart: CartItem[] = [
+//   {
+//     product: products[0],
+//     quantity: 1
+//   },
+//   {
+//     product: products[1],
+//     quantity: 2
+//   },
+//   {
+//     product: products[2],
+//     quantity: 1
+//   }
+// ];
+
+// function calculateCartTotal(items: CartItem[]): number {
+//   return items.reduce((total, item) => {
+//     return total + item.product.price * item.quantity;
+//   }, 0);
+// }
+
+// function createOrder(
+//   items: CartItem[],
+//   paymentMethod: PaymentMethod
+// ): Order {
+//   return {
+//     id: Date.now(),
+//     items,
+//     paymentMethod,
+//     total: calculateCartTotal(items)
+//   };
+// }
+
+// const order = createOrder(cart, "bkash");
+
+// console.log("Order ID:", order.id);
+// console.log("Payment:", order.paymentMethod);
+// console.log("Total:", order.total);
+
+interface Repository<T> {
+  getAll(): T[];
+  getById(id: number): T | undefined;
+  create(item: T): T;
+  update(id: number, item: Partial<T>): T | undefined;
+  delete(id: number): boolean;
 }
 
-interface CartItem {
-  product: Product;
-  quantity: number;
-}
 
-interface Order {
-  id: number;
-  items: CartItem[];
-  paymentMethod: PaymentMethod;
-  total: number;
-}
 
-const products: Product[] = [
-  {
-    id: 1,
-    name: "Laptop",
-    price: 70000,
-    stock: 5
-  },
-  {
-    id: 2,
-    name: "Mouse",
-    price: 1500,
-    stock: 10
-  },
-  {
-    id: 3,
-    name: "Keyboard",
-    price: 3000,
-    stock: 7
-  }
-];
 
-const cart: CartItem[] = [
-  {
-    product: products[0],
-    quantity: 1
-  },
-  {
-    product: products[1],
-    quantity: 2
-  },
-  {
-    product: products[2],
-    quantity: 1
-  }
-];
 
-function calculateCartTotal(items: CartItem[]): number {
-  return items.reduce((total, item) => {
-    return total + item.product.price * item.quantity;
-  }, 0);
-}
 
-function createOrder(
-  items: CartItem[],
-  paymentMethod: PaymentMethod
-): Order {
-  return {
-    id: Date.now(),
-    items,
-    paymentMethod,
-    total: calculateCartTotal(items)
-  };
-}
 
-const order = createOrder(cart, "bkash");
 
-console.log("Order ID:", order.id);
-console.log("Payment:", order.paymentMethod);
-console.log("Total:", order.total);
