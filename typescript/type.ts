@@ -341,16 +341,30 @@
 // console.log("Payment:", order.paymentMethod);
 // console.log("Total:", order.total);
 
-interface Repository<T> {
-  getAll(): T[];
-  getById(id: number): T | undefined;
-  create(item: T): T;
-  update(id: number, item: Partial<T>): T | undefined;
-  delete(id: number): boolean;
-}
+// interface Repository<T> {
+//   getAll(): T[];
+//   getById(id: number): T | undefined;
+//   create(item: T): T;
+//   update(id: number, item: Partial<T>): T | undefined;
+//   delete(id: number): boolean;
+// }
 
 
-
+type Payment =
+  | {
+      type: "card";
+      cardNumber: string;
+      expiryDate: string;
+    }
+  | {
+      type: "bkash";
+      phoneNumber: string;
+      transactionId: string;
+    }
+  | {
+      type: "cash";
+      amount: number;
+    };
 
 
 
