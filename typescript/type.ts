@@ -350,23 +350,53 @@
 // }
 
 
-type Payment =
-  | {
-      type: "card";
-      cardNumber: string;
-      expiryDate: string;
-    }
-  | {
-      type: "bkash";
-      phoneNumber: string;
-      transactionId: string;
-    }
-  | {
-      type: "cash";
-      amount: number;
+// type Payment =
+//   | {
+//       type: "card";
+//       cardNumber: string;
+//       expiryDate: string;
+//     }
+//   | {
+//       type: "bkash";
+//       phoneNumber: string;
+//       transactionId: string;
+//     }
+//   | {
+//       type: "cash";
+//       amount: number;
+//     };
+
+
+type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
+
+interface ApiResponse<T> {
+  data: T;
+  status: number;
+  message: string;
+}
+
+class ApiClient {
+  async request<T>(
+    url: string,
+    method: HttpMethod = "GET",
+    body?: unknown
+  ): Promise<ApiResponse<T>> {
+    const response = await fetch(url, {
+      method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: body ? JSON.stringify(body) : undefined,
+    });
+
+    const data = await response.json();
+
+    return {
+      data,
+      status: response.status,
+      message: response.ok ? "Success" : "Request failed",
     };
-
-
-
+  }
+}
 
 
