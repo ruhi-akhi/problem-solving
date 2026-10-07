@@ -367,36 +367,54 @@
 //     };
 
 
-type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
+// type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
 
-interface ApiResponse<T> {
-  data: T;
-  status: number;
-  message: string;
-}
+// interface ApiResponse<T> {
+//   data: T;
+//   status: number;
+//   message: string;
+// }
 
-class ApiClient {
-  async request<T>(
-    url: string,
-    method: HttpMethod = "GET",
-    body?: unknown
-  ): Promise<ApiResponse<T>> {
-    const response = await fetch(url, {
-      method,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: body ? JSON.stringify(body) : undefined,
-    });
+// class ApiClient {
+//   async request<T>(
+//     url: string,
+//     method: HttpMethod = "GET",
+//     body?: unknown
+//   ): Promise<ApiResponse<T>> {
+//     const response = await fetch(url, {
+//       method,
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: body ? JSON.stringify(body) : undefined,
+//     });
 
-    const data = await response.json();
+//     const data = await response.json();
 
-    return {
-      data,
-      status: response.status,
-      message: response.ok ? "Success" : "Request failed",
+//     return {
+//       data,
+//       status: response.status,
+//       message: response.ok ? "Success" : "Request failed",
+//     };
+//   }
+// }
+
+type DeepReadonly<T> = {
+  // তোমার implementation
+};
+
+interface User {
+  id: number;
+
+  profile: {
+    name: string;
+    address: {
+      city: string;
+      country: string;
     };
-  }
+  };
+
+  skills: string[];
 }
 
-
+type ReadonlyUser = DeepReadonly<User>;
