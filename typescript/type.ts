@@ -399,22 +399,33 @@
 //   }
 // }
 
-type DeepReadonly<T> = {
-  // তোমার implementation
-};
+// type DeepReadonly<T> = {
+//   // তোমার implementation
+// };
+
+// interface User {
+//   id: number;
+
+//   profile: {
+//     name: string;
+//     address: {
+//       city: string;
+//       country: string;
+//     };
+//   };
+
+//   skills: string[];
+// }
+
+// type ReadonlyUser = DeepReadonly<User>;
+
+
 
 interface User {
   id: number;
-
-  profile: {
-    name: string;
-    address: {
-      city: string;
-      country: string;
-    };
-  };
-
-  skills: string[];
+  name: string;
+  age: number;
+  email: string;
+  isAdmin: boolean;
+  isActive: boolean;
 }
-
-type ReadonlyUser = DeepReadonly<User>;
