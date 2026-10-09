@@ -421,11 +421,57 @@
 
 
 
+// interface User {
+//   id: number;
+//   name: string;
+//   age: number;
+//   email: string;
+//   isAdmin: boolean;
+//   isActive: boolean;
+// }
+
+
+
+
+
+
+class Cache<T> {
+  private store = new Map<string, T>();
+
+  set(key: string, value: T): void {
+    // Store the value
+  }
+
+  get(key: string): T | undefined {
+    // Return the value
+  }
+
+  has(key: string): boolean {
+    // Check whether key exists
+  }
+
+  delete(key: string): boolean {
+    // Delete the value
+  }
+
+  clear(): void {
+    // Clear all values
+  }
+}
+
 interface User {
   id: number;
   name: string;
-  age: number;
   email: string;
-  isAdmin: boolean;
-  isActive: boolean;
 }
+
+const userCache = new Cache<User>();
+
+userCache.set("user-1", {
+  id: 1,
+  name: "Akhi",
+  email: "akhi@example.com",
+});
+
+const user = userCache.get("user-1");
+console.log(user?.name);
